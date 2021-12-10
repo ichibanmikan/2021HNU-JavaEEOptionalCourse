@@ -40,6 +40,7 @@ public class userDao {
         return false;
     }
 
+
     public user loginUser(Connection con, user anUser)throws Exception{
         user resultAnUser=null;
         String sql="select * from user where username=? and password=?";
