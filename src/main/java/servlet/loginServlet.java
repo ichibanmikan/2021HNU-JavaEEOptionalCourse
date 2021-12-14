@@ -21,7 +21,6 @@ public class loginServlet extends HttpServlet {
         String username=request.getParameter("username");
         String pwd=request.getParameter("password");
         System.out.println(username+" "+pwd);
-
         DButil dbu=new DButil();
         Connection connLogin=dbu.getConnection();
         managerDao anMngrDao=new managerDao();
@@ -35,6 +34,7 @@ public class loginServlet extends HttpServlet {
                 if(toLogMngr==null){
                     response.sendRedirect("errorLogin.html");
                 } else {
+                    request.getSession().setAttribute("thisMngr",toLogMngr);
                     response.sendRedirect("Mngr.jsp");
                 }
             } catch (Exception e) {
@@ -48,6 +48,7 @@ public class loginServlet extends HttpServlet {
                 if(toLogUser==null){
                     response.sendRedirect("errorLogin.html");
                 } else {
+                    request.getSession().setAttribute("thisUser",toLogUser);
                     response.sendRedirect("User.jsp");
                 }
             } catch (Exception e){
